@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
       const duetodayitems=await Todo.dueToday();
       const todolist1=duetodayitems.map(todos => todos.displayableString()).join("\n");
       console.log(todolist1);
-      comsole.log("\n");
+      console.log("\n");
 
       console.log("Due Later");
       const duelateritems=await Todo.dueLater();
@@ -65,7 +65,7 @@ module.exports = (sequelize, DataTypes) => {
 
     static async dueLater(){
       const today=new Date();
-      return Todo.finAll({
+      return Todo.findAll({
         where:{
           dueDate:{
             [Op.gt]:today,
